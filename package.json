@@ -13,12 +13,14 @@
 		"lint:fix": "eslint src/**/*.{tsx,ts,js,jsx} --fix"
 	},
 	"dependencies": {
+		"apexcharts": "^3.41.0",
 		"axios": "^0.27.2",
 		"crypto-js": "^4.1.1",
 		"formik": "^2.2.9",
 		"lodash": "^4.17.21",
 		"query-string": "^7.1.1",
 		"react": "^18.2.0",
+		"react-apexcharts": "^1.4.0",
 		"react-bootstrap": "^2.5.0",
 		"react-dom": "^18.2.0",
 		"react-redux": "^8.0.1",

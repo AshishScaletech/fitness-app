@@ -84,6 +84,10 @@
 	width: 30%;
 }
 
+.width--32 {
+	width: 32%;
+}
+
 .width--35 {
 	width: 35%;
 }
@@ -104,6 +108,10 @@
 	width: 55%;
 }
 
+.width--58 {
+	width: 58%;
+}
+
 .width--60 {
 	width: 60%;
 }
@@ -122,6 +130,10 @@
 
 .width--80 {
 	width: 80%;
+}
+
+.width--7px {
+	width: 7px;
 }
 
 .width--16px {
@@ -173,6 +185,10 @@
 
 .height--16px {
 	height: 16px;
+}
+
+.height--20px {
+	height: 20px;
 }
 
 .height--50px {
@@ -360,6 +376,10 @@
 	@include marginRight(5px);
 }
 
+.mr--8 {
+	@include marginRight(8px);
+}
+
 .mr--10 {
 	@include marginRight(10px);
 }
@@ -416,8 +436,16 @@
 	@include marginBottom(15px);
 }
 
+.mb--16 {
+	@include marginBottom(16px);
+}
+
 .mb--20 {
 	@include marginBottom(20px);
+}
+
+.mb--24 {
+	@include marginBottom(24px);
 }
 
 .mb--25 {
@@ -1317,6 +1345,14 @@
 	border-radius: 100px;
 }
 
+.border--white {
+	border: 1px solid $white;
+}
+
+.border--grey-50 {
+	border: 1px solid getColor($grey, 50);
+}
+
 .rotate--180 {
 	transform: rotate(180deg);
 }
@@ -1345,4 +1381,15 @@
 	max-width: 1080px;
 	margin: 0 auto;
 	@include padding(20px 16px);
+}
+
+.box-items {
+	box-shadow: rgba(255, 255, 255, 0.5) 0px 3px 8px;
+}
+
+.profile-img__wrapper {
+	width: 60px !important;
+	height: 60px !important;
+	@include padding(5px);
+	border: 2px solid #2c7fff;
 }
