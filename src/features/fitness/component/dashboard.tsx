@@ -68,7 +68,6 @@ const Dashboard: React.FC<IProps> = (props) => {
 	// 	labels: ['Average Results']
 	// };
 	// const series = [76];
-	console.log('Activities:', Activities);
 	return (
 		<div className='width--full dashboard-wrapper flex'>
 			<div className='favorite-wrapper width--70 '>
