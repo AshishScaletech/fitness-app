@@ -49,15 +49,15 @@ const Dashboard: React.FC<IProps> = (props) => {
 							<p className='text--grey-600 font--medium mb--10'>Heart-Rate of LastWeek</p>
 							<HeartChart chartData={fitnessActivity.activities} />
 						</div>
-						<div className='favorites--chart width--25 '>
-							<p className='text--grey-600 font--medium mb--10'>Progress</p>
-							<div>
+						<div className='favorites--chart width--25 position--relative'>
+							<p className='text--grey-600 font--medium mb--10 '>Progress</p>
+							<div className='position--absolute'>
 								<DoughnutChart chartData={fitnessActivity.activities} />
 							</div>
-							<div>
+							<div className='position--absolute'>
 								<DoughnutChart chartData={fitnessActivity.activities} />
 							</div>
-							<div>
+							<div className='position--absolute'>
 								<DoughnutChart chartData={fitnessActivity.activities} />
 							</div>
 						</div>
