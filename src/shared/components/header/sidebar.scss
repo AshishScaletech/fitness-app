@@ -16,7 +16,7 @@ main {
 	height: 100vh;
 	width: 200px;
 	transition: all 0.5s;
-	border-right: 1px solid #828282;
+	border-right: 1px solid #bdbdbd;
 	.top_section {
 		display: flex;
 		align-items: center;
@@ -38,7 +38,7 @@ main {
 		transition: all 0.5s;
 		width: 100%;
 		box-sizing: border-box;
-		border-top: 1px solid #828282;
+		border-top: 1px solid #bdbdbd;
 	}
 	.active {
 		background: lightskyblue;

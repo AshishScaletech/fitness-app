@@ -22,7 +22,6 @@ const DoughnutChart: React.FC<IProps> = ({ chartData }) => {
 	const chartRef = useRef<any>(null);
 	const duration = chartData.map((item) => item.duration);
 	const avgDuration = duration.reduce((sum, curr) => sum + Number(curr), 0) / duration.length;
-	console.log('avgDuration:', avgDuration);
 
 	useEffect(() => {
 		if (chartRef && chartRef.current) {
@@ -38,7 +37,7 @@ const DoughnutChart: React.FC<IProps> = ({ chartData }) => {
 				data: [avgDuration, 100 - avgDuration],
 				borderColor: ['#fff'],
 				borderWidth: 1,
-				backgroundColor: ['white', 'blue'],
+				backgroundColor: ['#efefef', 'blue'],
 				hoverOffset: 10
 			}
 		]
@@ -65,8 +64,15 @@ const DoughnutChart: React.FC<IProps> = ({ chartData }) => {
 	];
 
 	const chartOptions: any = {
-		cutout: 50,
+		cutout: '78%',
+		elements: {
+			arc: {
+				borderWidth: 0
+			}
+		},
+		aspectRatio: 0,
 		maintainAspectRatio: false,
+		responsive: true,
 		plugins: {
 			legend: {
 				display: true,
@@ -129,7 +135,7 @@ const DoughnutChart: React.FC<IProps> = ({ chartData }) => {
 	};
 
 	return (
-		<div className='doughnut-chart display-flex-center'>
+		<div className='doughnut-chart  display-flex-center'>
 			<Doughnut id={`${Math.random()}`} data={data} options={chartOptions} plugins={CenterText} />
 		</div>
 	);

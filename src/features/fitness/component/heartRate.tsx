@@ -8,7 +8,7 @@ interface IProps {
 }
 
 ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale);
-const LineChart: React.FC<IProps> = (props) => {
+const HeartChart: React.FC<IProps> = (props) => {
 	const { chartData } = props;
 	const chartRef = useRef<any>(null);
 
@@ -18,15 +18,32 @@ const LineChart: React.FC<IProps> = (props) => {
 		}
 	}, []);
 
+	const days = chartData.map((items) => {
+		const month = new Date(items.date);
+		return month.toLocaleString('default', { weekday: 'short' });
+	});
+	// const Month = Array.from(new Set(monthArray));
+
+	const labels = days.splice(0, 5).map((item) => item);
+	const minValues = chartData.map((data) => data.heart_rate.average);
+	const maxValues = chartData.map((data) => data.heart_rate.max);
+
 	const data = {
-		labels: chartData.map((data) => data.name),
+		labels: labels,
 		datasets: [
 			{
-				label: 'calories',
-				data: chartData.map((data) => data.calories_burned),
-				fill: false,
-				borderColor: 'rgb(75, 192, 192)',
-				tension: 0.4
+				label: 'Minimum Heart Rate',
+				data: minValues,
+				borderColor: 'rgba(75, 192, 192, 1)',
+				backgroundColor: 'rgba(75, 192, 192, 0.2)',
+				fill: true
+			},
+			{
+				label: 'Maximum Heart Rate',
+				data: maxValues,
+				borderColor: 'rgba(255, 99, 132, 1)',
+				backgroundColor: 'rgba(255, 99, 132, 0.2)',
+				fill: true
 			}
 		]
 	};
@@ -59,11 +76,10 @@ const LineChart: React.FC<IProps> = (props) => {
 	};
 
 	return (
-		<div className='text--grey-600 energy-chart--wrapper'>
-			<p className='mb--10'>All Activity Energy Burn</p>
+		<div className='text--grey-600 '>
 			<Line id={`${Math.random()}`} data={data} options={chartOptions} />
 		</div>
 	);
 };
 
-export default LineChart;
+export default HeartChart;

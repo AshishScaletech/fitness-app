@@ -1390,8 +1390,7 @@
 
 .container {
 	width: 100%;
-	max-width: 1080px;
-	margin: 0 auto;
+	margin-left: 200px;
 	@include padding(20px 16px);
 }
 
@@ -1417,4 +1416,11 @@
 	border-radius: 12px;
 	margin: 0 auto;
 	padding: 16px;
+}
+
+.favorites--chart {
+	background: #fff;
+	padding: 10px;
+	border-radius: 12px;
+	box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
 }

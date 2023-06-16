@@ -24,7 +24,7 @@ const Sidebar: React.FC = () => {
 	return (
 		<div
 			style={{ width: isOpen ? '200px' : '70px' }}
-			className='sidebar border--gry-50 flex align-items--center flex--column justify-content--start'
+			className='sidebar border--gry-50 flex align-items--center flex--column justify-content--start position--fixed'
 		>
 			<div className='top_section flex align-items--center justify-content--center' onClick={toggle}>
 				<Fitness className='width--50px height--40px' />
