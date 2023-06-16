@@ -5,7 +5,7 @@ import { DATA } from 'shared/constants/constants';
 const DashboardDetails = () => {
 	const [fitnessActivity, setFitnessActivity] = useState(DATA);
 	return (
-		<div className='container'>
+		<div className='container '>
 			<Dashboard fitnessActivity={fitnessActivity} />
 		</div>
 	);

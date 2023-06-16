@@ -543,6 +543,10 @@
 	@include padding(0);
 }
 
+.p--5 {
+	@include padding(5px);
+}
+
 .p--10 {
 	@include padding(10px);
 }
@@ -770,6 +774,10 @@
 
 /* Font Size
 ------------------------------------------------------------------------------*/
+
+.font-size--12 {
+	font-size: 12px;
+}
 
 .font-size--xxs {
 	font-size: $font-size-xxs;
@@ -1334,6 +1342,10 @@
 	border-radius: $border-radius-xxl;
 }
 
+.border-radius--md {
+	border-radius: $border-radius-md;
+}
+
 .border-radius--half {
 	border-radius: $border-radius-circle;
 }
@@ -1387,9 +1399,22 @@
 	box-shadow: rgba(255, 255, 255, 0.5) 0px 3px 8px;
 }
 
+.dashboard-wrapper {
+	background-color: #efefef;
+	@include padding(16px);
+}
+
 .profile-img__wrapper {
 	width: 60px !important;
 	height: 60px !important;
 	@include padding(5px);
 	border: 2px solid #2c7fff;
+}
+
+.energy-chart--wrapper {
+	background: #fff;
+	width: calc(100% - 50px);
+	border-radius: 12px;
+	margin: 0 auto;
+	padding: 16px;
 }
