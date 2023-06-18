@@ -1,57 +1,134 @@
-import React, { useEffect, useRef } from 'react';
 import { Doughnut } from 'react-chartjs-2';
-import { Chart as ChartJS, LineElement, PointElement, LinearScale, Title, CategoryScale } from 'chart.js';
+import {
+	Chart as ChartJS,
+	LineElement,
+	PointElement,
+	LinearScale,
+	Title,
+	CategoryScale,
+	ArcElement,
+	Tooltip,
+	Chart
+} from 'chart.js';
+import React, { useEffect, useRef } from 'react';
+import { IActivity } from '../interface/interface';
 
-ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale);
+interface IProps {
+	chartData: IActivity[];
+}
 
-const Progress: React.FC = () => {
+ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale, ArcElement, Tooltip);
+const ProgressCart: React.FC<IProps> = ({ chartData }) => {
 	const chartRef = useRef<any>(null);
+	const duration = chartData.map((item) => item.duration);
+	const avgDuration = duration.reduce((sum, curr) => sum + Number(curr), 0) / duration.length;
+
 	useEffect(() => {
 		if (chartRef && chartRef.current) {
 			chartRef.current?.chartInstance.destroy();
 		}
 	}, []);
-	const chartData = {
+
+	const data = {
+		labels: ['#ffbd2e', '#fffffff'],
 		datasets: [
 			{
-				data: [75, 50, 25],
-				backgroundColor: ['#36a2eb', '#ffce56', '#ff6384'],
+				data: [100, avgDuration],
+				backgroundColor: ['#36a2eb', '#ffce56'],
 				borderWidth: 0,
 				cutout: '70%'
 			},
 			{
-				data: [25, 50, 75],
-				backgroundColor: ['#36a2eb', '#ffce56', '#ff6384'],
+				data: [100, 60],
+				backgroundColor: ['#ff6384', '#ffce56'],
 				borderWidth: 0,
-				cutout: '80%'
+				cutout: '50%'
 			},
 			{
-				data: [50, 25, 75],
-				backgroundColor: ['#36a2eb', '#ffce56', '#ff6384'],
+				data: [100, 20],
+				backgroundColor: ['yellow', '#ffce56'],
 				borderWidth: 0,
-				cutout: '90%'
+				cutout: '40%'
 			}
 		]
 	};
 
-	const options = {
-		responsive: true,
-		maintainAspectRatio: false,
-		rotation: -Math.PI,
-		circumference: Math.PI,
-		legend: {
-			display: false
+	const chartOptions: any = {
+		cutout: '78%',
+		elements: {
+			arc: {
+				borderWidth: 0
+			}
 		},
-		tooltips: {
-			enabled: false
+		aspectRatio: 0,
+		maintainAspectRatio: false,
+		responsive: true,
+		plugins: {
+			legend: {
+				display: true,
+				position: 'bottom',
+				labels: {
+					usePointStyle: true,
+					color: '#210873',
+					font: {
+						size: 15,
+						family: 'Rubik',
+						weight: '700'
+					},
+					padding: 50
+				}
+			},
+			elements: {
+				arc: {
+					borderWidth: 0
+				}
+			},
+			animation: true,
+			tooltip: {
+				xAlign: 'right',
+				backgroundColor: '#000025',
+				bodyColor: 'white',
+				titleColor: 'black',
+
+				bodyFont: {
+					size: 16,
+					weight: '700',
+					family: 'Rubik'
+				},
+				display: true,
+				callbacks: {
+					title: function (context: any) {
+						// console.log(context.label, context.parsed, 'jkhjhjh');
+						const label = context.label || '';
+						// const value = context.parsed || 0;
+						return `${label}`;
+					}
+				},
+				displayColors: false,
+				titleMarginBottom: 20,
+				boxHeight: 50,
+				padding: 15
+			},
+			labels: [
+				{
+					text: 'Foo',
+					font: {
+						size: '60',
+						family: 'Arial, Helvetica, sans-serif',
+						style: 'italic',
+						weight: 'bold'
+					},
+					color: '#bc2c1a'
+				}
+			]
 		}
 	};
+
 	return (
-		<div>
-			<h2>Progress Donut Chart</h2>
-			<Doughnut id={`${Math.random()}`} data={chartData} options={options} />
+		<div className='doughnut-chart  display-flex-center'>
+			<Doughnut id={`${Math.random()}`} data={data} options={chartOptions} />
 		</div>
 	);
 };
 
-export default Progress;
+export default ProgressCart;

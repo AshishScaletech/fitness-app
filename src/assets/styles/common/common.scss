@@ -144,6 +144,10 @@
 	width: 20px;
 }
 
+.width--24px {
+	width: 24px;
+}
+
 .width--32px {
 	width: 32px;
 }
@@ -154,6 +158,10 @@
 
 .width--60px {
 	width: 60px;
+}
+
+width--400px {
+	width: 400px;
 }
 
 .width--full {
@@ -170,6 +178,14 @@
 
 /* Height
 ------------------------------------------------------------------------------*/
+
+.height--auto {
+	height: auto;
+}
+
+.height--400px {
+	height: 400px;
+}
 
 .height--40 {
 	height: 40%;
@@ -486,6 +502,10 @@
 
 .ml--0 {
 	@include marginLeft(0);
+}
+
+.ml--200 {
+	@include marginLeft(200px);
 }
 
 .ml--5 {
@@ -957,6 +977,10 @@
 	text-transform: initial;
 }
 
+.text--color {
+	color: white;
+}
+
 .text-decoration--underline {
 	text-decoration: underline;
 }
@@ -1197,6 +1221,15 @@
 	@include getShadesColorClasses($red, 'fill');
 }
 
+
+.fill--dark {
+fill:#ffffff
+}
+
+.fill--pitch{
+	fill: #7b4438;
+}
+
 .stroke--white {
 	stroke: $white;
 }
@@ -1204,6 +1237,12 @@
 .stroke--primary {
 	stroke: $primary;
 }
+
+.stroke--black {
+	stroke: $black;
+}
+
+
 
 /* Text Color
 ------------------------------------------------------------------------------*/
@@ -1256,11 +1295,19 @@
 	background-color: $primary;
 }
 
+.bg--dark {
+	background-color: rgb(0, 0, 0);
+}
+
 .bg--white {
 	background-color: $white;
 	&.with-opacity-10 {
 		opacity: 0.1;
 	}
+}
+
+.bg--pitch{
+	background-color: #7b4438;
 }
 
 .bg--black {
@@ -1353,6 +1400,11 @@
 	border-radius: 5px;
 }
 
+
+.border-radius--24 {
+	border-radius: 24px;
+}
+
 .border-radius--100 {
 	border-radius: 100px;
 }
@@ -1420,7 +1472,46 @@
 
 .favorites--chart {
 	background: #fff;
-	padding: 10px;
+	padding: 20px;
 	border-radius: 12px;
 	box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+}
+
+.activity-data{
+	// background-color: rgba(255, 255, 255, 0.78);
+	background: linear-gradient(45deg, #996a6a, transparent);
+	padding: 20px;
+	border-radius: 12px;
+	box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+}
+
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 40%;
+}
+.image-container .after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 3px);
+    display: none;
+    color: #211212;
+    background: rgba(0, 0, 0, .6);
+    display: block;
+	border-radius: 24px;
+}
+
+
+.row {
+	position: absolute;
+	background-image: linear-gradient(to top ,rgb(173, 141, 141) ,rgb(201, 188, 188),rgb(133, 96, 96));
+	bottom: 100px;
+	right: 100px;
+	border-radius: 30px;
+	height: 200px;
+	align-items: center;
+	align-content: center;
 }

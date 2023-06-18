@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { IActivity, IFitness } from '../interface/interface';
 
 import ProfileImg from '../../../assets/images/profile-img.jpg';
@@ -7,6 +7,10 @@ import DoughnutChart from './daunutChart';
 import HeartChart from './heartRate';
 import Progress from './progress';
 import { RightIcon } from 'shared/components/icons/icons';
+import ProgressCart from './progress';
+import { useNavigate } from 'react-router-dom';
+import ActivitiesDetails from './activityDetails';
+import UserProfile from './userProfile';
 
 interface IProps {
 	fitnessActivity: IFitness;
@@ -14,11 +18,9 @@ interface IProps {
 
 const Dashboard: React.FC<IProps> = (props) => {
 	const { fitnessActivity } = props;
-	// const [selectedOption, setSelectedOption] = useState(options);
 	const Activities = () => {
 		fitnessActivity.activities.map((activity: IActivity) => activity);
 	};
-	console.log('Activities:', Activities);
 
 	const options = useMemo(() => {
 		fitnessActivity.activities.map((items: any) => items.name);
@@ -41,24 +43,24 @@ const Dashboard: React.FC<IProps> = (props) => {
 						Favorite
 					</p>
 					<div className='flex justify-content--around'>
-						<div className='favorites--chart width--25'>
+						<div className='favorites--chart width--25 flex align-items--center justify-content--around height--auto flex--column'>
 							<p className='text--grey-600 font--medium mb--10'>Average Activity Duration</p>
 							<DoughnutChart chartData={fitnessActivity.activities} />
 						</div>
-						<div className='favorites--chart width--25'>
+						<div className='favorites--chart width--25 flex align-items--center justify-content--around flex--column'>
 							<p className='text--grey-600 font--medium mb--10'>Heart-Rate of LastWeek</p>
 							<HeartChart chartData={fitnessActivity.activities} />
 						</div>
 						<div className='favorites--chart width--25 position--relative'>
 							<p className='text--grey-600 font--medium mb--10 '>Progress</p>
-							<div className='position--absolute'>
-								<DoughnutChart chartData={fitnessActivity.activities} />
+							{/* <div className='flex'> */}
+							<div className=''>
+								<ProgressCart chartData={fitnessActivity.activities} />
 							</div>
-							<div className='position--absolute'>
-								<DoughnutChart chartData={fitnessActivity.activities} />
-							</div>
-							<div className='position--absolute'>
-								<DoughnutChart chartData={fitnessActivity.activities} />
+							<div className='flex justify-content--around mt--10'>
+								<p className='text--grey-600'>distance:45</p>
+								<p className='text--grey-600'>duration:34</p>
+								<p className='text--grey-600'>steps:20</p>
 							</div>
 						</div>
 					</div>
@@ -74,56 +76,8 @@ const Dashboard: React.FC<IProps> = (props) => {
 					</div>
 				</div>
 			</div>
-			<div className='profile width--30 bg--white p--20 border-radius--lg'>
-				<p className='flex align-items--center text--grey-600 mb--20'>
-					{' '}
-					<span className='width--7px height--20px bg--grey-150 mr--15 ' />
-					profile
-				</p>
-				<div className='flex align-items--center justify-content--center flex--column width--full'>
-					<div className='profile-img__wrapper border-radius--half '>
-						<img
-							src={ProfileImg}
-							alt='profile'
-							className='width--full height--full border-radius--half object-fit--cover'
-						/>
-					</div>
-					<p className='font-size--default mt--15'>{fitnessActivity.user.name}</p>
-					<p className='font-size--xxs text--grey-100 mt--5'>{fitnessActivity.user.email}</p>
-					<div className='flex mt--15 bg--primary border-radius--md p--10 width--full justify-content--around'>
-						<p className='flex flex--column font-size--12'>
-							<span className='font-size--12'>Age</span>
-							<span className='font-size--12'>{fitnessActivity.user.age}</span>
-						</p>
-						<p className='flex flex--column font-size--12'>
-							<span className='font-size--12'>Height</span>
-							<span className='font-size--12'>
-								{fitnessActivity.user.height}
-								{''}Ftnew SMS text
-							</span>
-						</p>
-					</div>
-				</div>
-
-				<p className='flex align-items--center text--grey-600 mt--25'>
-					{' '}
-					<span className='width--7px height--20px bg--grey-150 mr--15 ' />
-					Daily Activates
-				</p>
-				<div className='p--20'>
-					{fitnessActivity.activities.map((items) => {
-						return (
-							<div className='mb--10 flex'>
-								<RightIcon className='width--16px fill--grey-50 mr--25' />
-								<p className='text--grey-600 cursor--pointer'>
-									{items.name}
-									<hr className='width--full text--grey-50 mt--5 mb--5' />
-								</p>
-							</div>
-						);
-					})}
-				</div>
-			</div>
+			{/* )} */}
+			<UserProfile fitnessActivity={fitnessActivity} />
 		</div>
 	);
 };
